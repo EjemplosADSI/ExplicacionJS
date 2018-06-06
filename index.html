@@ -5,8 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="MiTexto"></div>
+
   <h1 id="titulo">Ejemplos de JavaScript</h1>
+  <input type="text" id="txtUser" name="txtUser" value="">
+
+  <!-- Segundo Uso -->
+  <input type="button" value="Boton" onclick="">
+  <button type="button" name="button" onclick="llenarTexto('Hola Mundo...');">Click Me</button>
+  <script src="indexjs.js" charset="utf-8"></script>
+  <script>
+
+    const PI = 3.1416;
+    var num = 5;
+
+    //console.log(typeof("PI"));
+    var result = parseFloat("15.55555556");
+    console.log(result, typeof(result));
+
+    var miAuto = new Object();
+    miAuto.marca = "Ford";
+    miAuto.modelo = "Mustang";
+    miAuto.año = 1969;
+    miAuto['Nuevo'] = true;
+
+    var frutas = {
+      color : "azul",
+      tamaño : 12,
+      otro : {
+        nuevo : false
+      }
+    };
+
+    frutas.otro['cosa'] = true;
+
+    console.log(frutas);
+    console.log(miAuto);
+
+    if (true){
+      var num = 10;
+    }
+
+    console.log(num,PI);
+
+    document.write(variable);
+    var a = 5;
+    var b = "aaaaa";
+    document.write("<strong class='hola'> Hola "+a+" </strong>");
+  </script>
 </body>
 </html>
