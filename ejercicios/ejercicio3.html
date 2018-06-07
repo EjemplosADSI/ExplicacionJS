@@ -359,9 +359,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <label for="radio">Radio</label></br>
                   <input type="text" id="radio" name="radio" value=""></br>
                   <label for="tipo">Tipo</label></br>
-                  <select class="tipo" name="tipo"></br>
-                    <option value="Circulo">Circulo</option>
-                    <option value="Circunferencia">Circunferencia</option>
+                  <select id="tipo" class="tipo" name="tipo"></br>
+                    <option id="Circulo" value="Circulo">Circulo</option>
+                    <option id="Circunferencia" value="Circunferencia">Circunferencia</option>
                   </select>
                 </div>
                 <button type="button" class="btn btn-default" onclick="btnSend();">Calcular</button>
@@ -391,10 +391,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   <script>
 
     function btnSend(){
-        var radio = document.getElementById("radio").value;
-        var result = calcular(radio);
 
-        document.getElementById("divResult").innerHTML = ("El area es : "+result);
+        var TipoCalculo = "";
+        var radio = document.getElementById("radio").value;
+        var select = document.getElementById("tipo");
+        var tipo = select.options[select.selectedIndex].value;
+        var result = calcular(radio, tipo);
+
+        if (tipo == "Circulo"){
+          TipoCalculo = "El Area";
+        }else{
+          TipoCalculo = "La Longitud";
+        }
+
+        document.getElementById("divResult").innerHTML = (TipoCalculo+" del "+tipo+" es: "+result);
     }
 
   </script>
