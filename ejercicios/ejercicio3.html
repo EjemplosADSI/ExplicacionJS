@@ -29,7 +29,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
  <!-- side nav css file -->
 
  <!-- js-->
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
 <script src="js/modernizr.custom.js"></script>
 
 <!--webfonts-->
@@ -364,7 +364,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <option id="Circunferencia" value="Circunferencia">Circunferencia</option>
                   </select>
                 </div>
-                <button type="button" class="btn btn-default" onclick="btnSend();">Calcular</button>
+                <button type="button" class="btn btn-default" id="btnCalcular">Calcular</button>
               </form>
 						</div>
 					</div>
@@ -390,22 +390,36 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
   <script>
 
-    function btnSend(){
+    function dosJQuery(){
 
-        var TipoCalculo = "";
-        var radio = document.getElementById("radio").value;
-        var select = document.getElementById("tipo");
-        var tipo = select.options[select.selectedIndex].value;
-        var result = calcular(radio, tipo);
 
-        if (tipo == "Circulo"){
-          TipoCalculo = "El Area";
-        }else{
-          TipoCalculo = "La Longitud";
-        }
-
-        document.getElementById("divResult").innerHTML = (TipoCalculo+" del "+tipo+" es: "+result);
     }
+
+$( "#btnCalcular").click(function() {
+  var TipoCalculo = "";
+
+  var radio = $("#radio").val();
+  var tipo = $("#tipo").val();
+
+  var result = calcular(radio, tipo);
+
+  if (tipo == "Circulo"){
+    TipoCalculo = "El Area";
+  }else{
+    TipoCalculo = "La Longitud";
+  }
+
+  $("#divResult").html(""+TipoCalculo+" del "+tipo+" es: "+result);
+
+  $( "#divResult" ).animate({
+      width: "70%",
+      opacity: 0.4,
+      marginLeft: "0.6in",
+      fontSize: "3em",
+      borderWidth: "10px"
+    }, 1500 );
+});
+
 
   </script>
 
