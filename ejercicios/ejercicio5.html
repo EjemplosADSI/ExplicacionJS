@@ -28,8 +28,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
  <link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
  <!-- side nav css file -->
 
+ <!-- Jquery Ui -->
+ <link href='js/jquery-ui-1.12.1/jquery-ui.min.css' rel='stylesheet' type='text/css'/>
+ <link href='js/jquery-ui-1.12.1/jquery-ui.theme.min.css' rel='stylesheet' type='text/css'/>
+ <!-- Jquery Ui -->
+
  <!-- js-->
 <script src="js/jquery-3.3.1.js"></script>
+<script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script src="js/modernizr.custom.js"></script>
 
 <!--webfonts-->
@@ -353,20 +359,32 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						<div class="form-title">
 							<h4>Ingreso de alumnos :</h4>
 						</div>
-						<div class="form-body">
-							<form>
-                <fieldset>
-                  <legend>Datos del Alumno:</legend>
-                    <div class="form-group">
-                      <label for="edad">Edad</label></br>
-                      <input type="number" id="edad" name="edad" value=""></br></br>
-                      <label for="estatura">Estatura</label></br>
-                      <input type="number" id="estatura" name="estatura" value=""></br>
-                    </div>
-                </fieldset>
-                <button type="button" class="btn btn-default" id="btnCalcular">Agregar</button>
-              </form>
-						</div>
+
+            <!-- Accordion -->
+            <div id="accordion">
+            	<h3>Descripcion</h3>
+            	<div>A05: Dadas las edades y alturas de 5 alumnos, mostrar la edad y la estatura media, la cantidad
+de alumnos mayores de 18 años, y la cantidad de alumnos que miden más de 1.75.</div>
+            	<h3>Resultado</h3>
+            	<div>
+                <div class="form-body">
+    							<form>
+                    <fieldset>
+                      <legend>Datos del Alumno:</legend>
+                        <div class="form-group">
+                          <label for="edad">Edad</label></br>
+                          <input type="number" id="edad" name="edad" value=""></br></br>
+                          <label for="estatura">Estatura</label></br>
+                          <input type="number" id="estatura" name="estatura" value=""></br>
+                        </div>
+                    </fieldset>
+                    <button type="button" class="btn btn-default" id="btnCalcular">Agregar</button>
+                  </form>
+    						</div>
+              </div>
+
+            </div>
+
 					</div>
           <div class="panel panel-primary">
             <div class="panel-heading">
@@ -397,6 +415,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
   <script>
 
+  $( "#accordion" ).accordion({
+    active: 2,
+    animate: 200,
+    collapsible: true,
+    heightStyle: "content"
+  });
+
+
   $("#btnCalcular").click(function() {
     if (arrAlumnos["Edad"].length != 5){
       var strFila = obtenerDatos($("#edad").val(), $("#estatura").val());
@@ -404,9 +430,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     }else{
       $("#divResult").html(calcularDatos());
     }
-    console.log(arrAlumnos);
   });
-
   </script>
 
 
