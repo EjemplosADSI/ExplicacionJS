@@ -348,20 +348,23 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		<div id="page-wrapper">
 			<div class="main-page">
 				<div class="forms">
-					<h2 class="title1">Ejercicio 01</h2>
+					<h2 class="title1">Ejercicio 05</h2>
 					<div class="form-grids row widget-shadow" data-example-id="basic-forms">
 						<div class="form-title">
-							<h4>Ingrese los datos :</h4>
+							<h4>Ingreso de alumnos :</h4>
 						</div>
 						<div class="form-body">
 							<form>
-                <div class="form-group">
-                  <label for="numero">numero</label></br>
-                  <input type="number" id="numero" name="numero" value=""></br>
-
-
-                </div>
-                <button type="button" class="btn btn-default" id="btnCalcular" onclick="inverso();">Calcular</button>
+                <fieldset>
+                  <legend>Datos del Alumno:</legend>
+                    <div class="form-group">
+                      <label for="edad">Edad</label></br>
+                      <input type="number" id="edad" name="edad" value=""></br></br>
+                      <label for="estatura">Estatura</label></br>
+                      <input type="number" id="estatura" name="estatura" value=""></br>
+                    </div>
+                </fieldset>
+                <button type="button" class="btn btn-default" id="btnCalcular">Agregar</button>
               </form>
 						</div>
 					</div>
@@ -370,7 +373,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
               <h3 class="panel-title">Resultado</h3>
             </div>
             <div class="panel-body">
-              <div id="divResult"></div>
+              <div id="divResult">
+                <!-- <table border="1">
+                  <tr>
+                    <th>Edad</th>
+                    <th>Altura</th>
+                  </tr>
+                  <div class="filas">
+                    <tr>
+                      <td>Eve</td>
+                      <td>Jackson</td>
+                    </tr>
+                  </div>
+                </table> -->
+              </div>
             </div>
           </div>
 				</div>
@@ -386,22 +402,45 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
   <script src="js/ejer_4.js" charset="utf-8"></script>
 
   <script>
-  function inverso(){
-    var numero = document.getElementById("numero").value;
-    if(numero<=9999){
 
+  var arrAlumnos = new Array();
+  arrAlumnos["Edad"] = new Array();
+  arrAlumnos["Estatura"] = new Array();
 
-     var invertido = invertir(numero);
+  $("#btnCalcular").click(function() {
 
-     document.getElementById("divResult").innerHTML = (invertido);
+    var edad = $("#edad").val();
+    var estatura = $("#estatura").val();
 
-   }
-   else{
-      document.getElementById("divResult").innerHTML = ("numero invalido");
-   }
+    var edad = parseInt(edad);
+    var estatura = parseInt(estatura);
 
+    arrAlumnos["Edad"].push(edad);
+    arrAlumnos["Estatura"].push(estatura);
+
+    console.log(arrAlumnos);
+    //var result = calcular(radio, tipo);
+
+    /*if (tipo == "Circulo"){
+      TipoCalculo = "El Area";
+    }else{
+      TipoCalculo = "La Longitud";
+    }
+
+    $("#divResult").html(""+TipoCalculo+" del "+tipo+" es: "+result);
+
+    $( "#divResult" ).animate({
+        width: "70%",
+        opacity: 0.4,
+        marginLeft: "0.6in",
+        fontSize: "3em",
+        borderWidth: "10px"
+      }, 1500 );*/
+  });
+
+  function printArray(){
+    var html = ""
   }
-
 
   </script>
 
