@@ -374,18 +374,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="panel-body">
               <div id="divResult">
-                <!-- <table border="1">
+                <table id="filas" border="1">
                   <tr>
                     <th>Edad</th>
                     <th>Altura</th>
                   </tr>
-                  <div class="filas">
-                    <tr>
-                      <td>Eve</td>
-                      <td>Jackson</td>
-                    </tr>
-                  </div>
-                </table> -->
+                </table>
               </div>
             </div>
           </div>
@@ -409,44 +403,55 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
   $("#btnCalcular").click(function() {
 
-    var edad = $("#edad").val();
-    var estatura = $("#estatura").val();
+    if (arrAlumnos["Edad"].length == 5){
+      var EdadMedia = 0;
+      var EstaturaMedia = 0;
+      var Mayores = 0; //Mayores de 18
+      var Altos = 0; //Mayores de 1.75
 
-    var edad = parseInt(edad);
-    var estatura = parseInt(estatura);
+      for (var i = 0; i < 5; i++) {
+        EdadMedia += arrAlumnos["Edad"][i];
+        EstaturaMedia += arrAlumnos["Estatura"][i];
 
-    arrAlumnos["Edad"].push(edad);
-    arrAlumnos["Estatura"].push(estatura);
+        if(arrAlumnos["Edad"][i] >= 18){
+          Mayores++;
+        }
 
-    console.log(arrAlumnos);
-    //var result = calcular(radio, tipo);
+        if(arrAlumnos["Estatura"][i] >= 175){
+          Altos++;
+        }
 
-    /*if (tipo == "Circulo"){
-      TipoCalculo = "El Area";
+      }
+      EdadMedia = EdadMedia / 5;
+      EstaturaMedia = EstaturaMedia / 5;
+
+      strResultado = "<strong>Edad Media: </strong>"+EdadMedia+
+                      ".</br>"+"<strong>Estatura Media: </strong>"+EstaturaMedia+
+                      ".</br>"+"<strong>Mayores de 18: </strong>"+Mayores+".</br>"+
+                      "<strong>Mayores de 175 cm: </strong>"+Altos+".</br>";
+      $("#divResult").html(strResultado);
+
     }else{
-      TipoCalculo = "La Longitud";
+      var edad = $("#edad").val();
+      var estatura = $("#estatura").val();
+
+      var edad = parseInt(edad);
+      var estatura = parseInt(estatura);
+
+      arrAlumnos["Edad"].push(edad);
+      arrAlumnos["Estatura"].push(estatura);
+
+      var strFila = "<tr><td>"+edad+"</td><td>"+estatura+"</td></tr>";
+      $("#filas").append(strFila);
     }
 
-    $("#divResult").html(""+TipoCalculo+" del "+tipo+" es: "+result);
+    console.log(arrAlumnos);
 
-    $( "#divResult" ).animate({
-        width: "70%",
-        opacity: 0.4,
-        marginLeft: "0.6in",
-        fontSize: "3em",
-        borderWidth: "10px"
-      }, 1500 );*/
   });
-
-  function printArray(){
-    var html = ""
-  }
 
   </script>
 
 	<!-- side nav js -->
-
-
 	<script src='js/SidebarNav.min.js' type='text/javascript'></script>
 	<script>
       $('.sidebar-menu').SidebarNav()
